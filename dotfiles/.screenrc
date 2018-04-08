@@ -5,11 +5,14 @@
 # caption string "%{= dd} "
 #
 # caption always "%{=b dw}:%{-b dw}:%{=b dk}[ %{-b dw}%{-b dg}$USER%{-b dw}@%{-b dg}%H %{=b dk}] [ %= %?%{-b dg}%-Lw%?%{+b dk}(%{+b dw}%n:%t%{+b dk})%?(%u)%?%{-b dw}%?%{-b dg}%+Lw%? %{=b dk}]%{-b dw}:%{+b dw}:"
-hardstatus alwayslastline "%{= dG}[%{-b dw}%{-b dG}%{-b dw}%{-b dG}%H%{=b dG}][%=%?%{-b dg}%-Lw%?%{+b dk}(%{+b dG}%n:%t%{+b dk})%?(%u)%?%{-b dG}%?%{-b dg}%+Lw%? %{=b dG}][%l]"
+# hardstatus string "%{= dG}[%{-b dw}%{-b dG}%{-b dw}%{-b dG}%H%{=b dG}][%=%?%{-b dg}%-Lw%?%{+b dk}(%{+b dG}%n:%t%{+b dk})%?(%u)%?%{-b dG}%?%{-b dg}%+Lw%? %{=b dG}][%l]"
+
+hardstatus string "(%n:%t)%?(%u)%?[%l]"
 caption string "%{= dd} "
+
 # huge scrollback buffer
-defscrollback 5000
-# 
+defscrollback 1000
+ 
 # no welcome message
 startup_message off
 vbell off
@@ -23,8 +26,8 @@ bind = resize =
 bind + resize +1
 bind - resize -1
 altscreen on
- 
+
 # default windows
 # screen -t Shell1  0 bash
-# screen -t Shell2  2 bash
+# screen -t Shell2  1 bash
 
