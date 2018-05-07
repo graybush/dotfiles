@@ -36,15 +36,14 @@ screen_vim() {
 }
 screen_cd()
 {
-    cd $1
-    screen -X chdir $PWD
+    cd "$*"
+    screen -X chdir "$PWD" 
 }
 
 # if [ $TERM == "screen" -o $TERM == "screen.linux" ]; then
 if [ "$TERM" == "screen" ]; then
     alias ssh=screen_ssh
-    alias vim=screen_vim
+    # alias vim=screen_vim
     alias cd=screen_cd
 fi
-
 
