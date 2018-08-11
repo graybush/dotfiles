@@ -17,15 +17,13 @@ fi
 alias ll='ls -lh'
 alias la='ls -Ah'
 alias dirs='dirs -v'
-alias j2='sudo -i -u j2eeadmin'
-alias cdlog='cd ~/esshome/swafsdata/global/local/log'
+alias ssh='ssh -XC'
+alias me='ps -fu $(whoami)'
+alias fixterm='stty sane; stty erase ^h'
 
 # Deep file explorer
 alias dirTree="find . -maxdepth 4 -name '\.[^.]*' -prune -o -print | sed -e 's/\.\///' -e 's/[^/^|]*\// --- /g' -e 's/---  / |  /g '"
 
-# User specific aliases and functions
-
-# Opens SSH on a new screen window with the appropriate name.
 screen_ssh() {
     args=$#
     screen -t ${!args} ssh -X -C $@
@@ -34,16 +32,14 @@ screen_vim() {
     args=$#
     screen -t ${!args} vim $@
 }
-screen_cd()
-{
+screen_cd() {
     cd "$*"
     screen -X chdir "$PWD" 
 }
 
-# if [ $TERM == "screen" -o $TERM == "screen.linux" ]; then
-if [ "$TERM" == "screen" ]; then
-    alias ssh=screen_ssh
-    # alias vim=screen_vim
-    alias cd=screen_cd
+if [[ -n $(ps -fu $(whoami) | awk '{print $8}' | grep 'screen') ]]; then 
+  alias cd=screen_cd 
+  alias ssh=screen_ssh
+  # alias vim=screen_vim
 fi
 

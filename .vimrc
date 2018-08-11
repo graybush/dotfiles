@@ -1,31 +1,27 @@
+set autoindent
 set background=dark
-set nocompatible
-syntax on " enable
-set ruler
 set confirm
-set number
-
-" tab spacing
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-
 set exrc
+set hlsearch
+set nocompatible
+set number
+set ruler
 set secure
+set showcmd
+set wildmenu
+
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 set autoindent
 
-" open split windows below and right rather than above and left set splitbelow set splitright
+" open split windows below and right rather than above and left set splitbelow 
+" set splitright
 set splitbelow
 set splitright
 
-" colorscheme choice
-" colorscheme darkblue
-
-" call pathogen#infect()
-
-" preserve tab level
-set autoindent
+syntax enable
 
 " autoindent based on syntax
 filetype on
@@ -38,13 +34,9 @@ nnoremap <C-k> :resize -3 <CR>
 nnoremap <C-h> :vertical resize -3 <CR>
 nnoremap <C-l> :vertical resize +3 <CR>
 map <C-n> : NERDTreeToggle<CR>
-" nnoremap <silent> <F9> :TagbarToggle<CR>
-nnoremap ,s :exe 'grep ' . expand('<cword>') . ' *'<CR>
+nnoremap <F10> :call ToggleOverLength() <CR>
+nnoremap <C-I> :nohl <CR>
 
-" turn on search highlighting
-set hlsearch
-" reset highlighting
-nnoremap <silent> <C-I> :nohl <CR> :IndentGuidesEnable <CR> " reset syntax highlighting nnoremap <C-S> :syntax sync fromstart <CR>
 
 " status line always on
 set laststatus=2
@@ -69,9 +61,6 @@ hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 " hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 " ++++++++ specific instructions for different filetypes
 
-" make fortran free form, not fixed
-let fortran_free_source = 1
-
 " force shell highlighting to be bash
 let g:is_bash = 1
 
@@ -85,37 +74,27 @@ augroup filetypedetect
     au! BufNewFile, BufRead *.json setfiletype json augroup END
 
 "+++NERDTree settings
-" let g:NERDTreeDirArrowExpandable='+'
-" let g:NERDTreeDirArrowCollapsible='~'
+let g:NERDTreeDirArrowExpandable='+'
+let g:NERDTreeDirArrowCollapsible='~'
 
-"+++indent guides settings
-" augroup indent_settings
-"   "auto-folds with indents
-"   au BufReadPre * setlocal foldmethod=indent
-"   "save folds when closing
-"   au BufWinLeave *.* mkview
-"   au BufWinEnter *.* silent loadview
-"   "set up indent guides
-"   let g:indent_guides_auto_colors=0
-"   autocmd VimEnter,Colorscheme * hi IndentGuidesEven ctermbg=5
-"   let g:indent_guides_start_level=2
-"   let g:indent_guides_guide_size=1
-"   let g:indent_guides_enable_on_vim_startup=1
-"   let g:indent_guides_default_mapping = 0
-" augroup END
+""""""""""""""""""""""""""""""""""""""
+" 100 char limit
+""""""""""""""""""""""""""""""""""""""
+let g:over_length_enabled=0
+function ToggleOverLength()
+   if g:over_length_enabled==1
+      hi clear OverLength
+      let g:over_length_enabled=0
+   else
+      highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+      match OverLength /\%>80v.\+/
+      let g:over_length_enabled=1
+   endif
+endfunction
 
-"+++Tagbar settings
-" nnoremap ,t :TagbarTogglePause <CR>
-let g:tagbar_width = 30
-let g:tagbar_sort = 0
-let g:tagbar_iconchars = ['+', '-']
-let g:tagbar_autoshowtag = 1
-" autocmd FileType * nested :call tagbar#autoopen(0) let g:tagbar_status_func = 'rcfunc#TagbarStatusFunc'
-" autocmd InsertLeave * if pumvisible() == 0|pclose|endif autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-
-"When a new window is entered
-" autocmd BufEnter __Tagbar__  :call rcfunc#killIDE() autocmd BufEnter NERD_tree*  :call rcfunc#killIDE()
-
-" Tag setup and generation
-" Opens up NERDTree and tagbar if tags exist " add root directory containing arch tags if it exists let &tags="./.tags,.master_tags,"
-" autocmd BufWritePost *.* :call rcfunc#genLocalTags() au BufEnter *.* :call rcfunc#Setup_tags()
+if &diff
+   highlight DiffAdd cterm=none ctermfg=black ctermbg=Green gui=none guifg=black guibg=Green
+   highlight DiffDelete cterm=none ctermfg=black ctermbg=Red gui=none guifg=black guibg=Red
+   highlight DiffChange cterm=none ctermfg=black ctermbg=Yellow gui=none guifg=black guibg=Yellow
+   highlight DiffText cterm=none ctermfg=black ctermbg=Magenta gui=none guifg=black guibg=Magenta
+endif

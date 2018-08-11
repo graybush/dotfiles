@@ -5,8 +5,12 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
-# User specific environment and startup programs
+umask 0007
+#allow <C-S> to be used in vim
+stty -ixon
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-
+PATH=${PATH}:${HOME}/.local/bin
+PATH=${PATH}:${HOME}/bin
+PATH=${PATH}:${HOME}/workspace/mercurial-2.3.2
+PATH=${PATH}:/usr/local/apache-maven-3.5.2/bin
 export PATH

@@ -1,13 +1,5 @@
-# the following two lines give a two-line status, with the current window highlighted
-# hardstatus alwayslastline '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%m/%d %{W}%c%{g}]'
-#
-# hardstatus alwayslastline '%{= kG} [%= %-w (%n*%t) %?(%u)%? %+w %=%{= kG} %l]'
-# caption string "%{= dd} "
-#
-# caption always "%{=b dw}:%{-b dw}:%{=b dk}[ %{-b dw}%{-b dg}$USER%{-b dw}@%{-b dg}%H %{=b dk}] [ %= %?%{-b dg}%-Lw%?%{+b dk}(%{+b dw}%n:%t%{+b dk})%?(%u)%?%{-b dw}%?%{-b dg}%+Lw%? %{=b dk}]%{-b dw}:%{+b dw}:"
-# hardstatus string "%{= dG}[%{-b dw}%{-b dG}%{-b dw}%{-b dG}%H%{=b dG}][%=%?%{-b dg}%-Lw%?%{+b dk}(%{+b dG}%n:%t%{+b dk})%?(%u)%?%{-b dG}%?%{-b dg}%+Lw%? %{=b dG}][%l]"
-
-hardstatus string "(%n:%t)%?(%u)%?[%l]"
+hardstatus string "[%n:%t]%?(%u)%?[%l]"
+hardstatus alwayslastline '%{= kR} [%= %-w (%n*%t) %?(%u)%? %+w %=%{= kR} %l]'
 caption string "%{= dd} "
 
 # huge scrollback buffer
@@ -26,8 +18,3 @@ bind = resize =
 bind + resize +1
 bind - resize -1
 altscreen on
-
-# default windows
-# screen -t Shell1  0 bash
-# screen -t Shell2  1 bash
-
