@@ -66,12 +66,14 @@ let g:is_bash = 1
 
 " define filetypes
 augroup filetypedetect
-    au! BufNewFile, BufRead *.f90? setfiletype fortran
-    au! BufNewFile, BufRead bash* setfiletype sh
-    au! BufNewFile, BufRead Make* :call rcfunc#Setup_Makefiles()
-    au! BufNewFile, BufRead *.vim setfiletype vim
-    au! BufNewFile, BufRead *.py setfiletype python
-    au! BufNewFile, BufRead *.json setfiletype json augroup END
+    au! BufNewFile,BufRead *.f90? setfiletype fortran
+    au! BufNewFile,BufRead bash* setfiletype sh
+    au! BufNewFile,BufRead Make* :call rcfunc#Setup_Makefiles()
+    au! BufNewFile,BufRead *.vim setfiletype vim
+    au! BufNewFile,BufRead *.py setfiletype python
+    au! BufNewFile,BufRead *.json setfiletype json 
+    au! BufNewFile,BufRead *.md set filetype=markdown
+augroup END
 
 "+++NERDTree settings
 let g:NERDTreeDirArrowExpandable='+'
