@@ -24,4 +24,3 @@ HISTCONTROL=ignoredup
 
 COLOR="\e[1;32m" # Default to green
 PS1="\[${COLOR}\][\u@\h \[\e[00m\]\W\[${COLOR}\]]\$ \[\e[00m\]"
-

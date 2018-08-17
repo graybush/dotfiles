@@ -22,7 +22,7 @@ alias me='ps -fu $(whoami)'
 alias fixterm='stty sane; stty erase ^h'
 
 # Deep file explorer
-alias dirTree="find . -maxdepth 4 -name '\.[^.]*' -prune -o -print | sed -e 's/\.\///' -e 's/[^/^|]*\// --- /g' -e 's/---  / |  /g '"
+alias dirtree="find . -maxdepth 4 -name '\.[^.]*' -prune -o -print | sed -e 's/\.\///' -e 's/[^/^|]*\// --- /g' -e 's/---  / |  /g '"
 
 screen_ssh() {
     args=$#
