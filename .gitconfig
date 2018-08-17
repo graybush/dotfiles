@@ -1,0 +1,23 @@
+[core]
+  editor = vim
+[diff]
+  tool = vimdiff
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+[difftool]
+  prompt = false
+[push]
+  default = matching
+[color]
+  diff = always
+  status = always
+  branch = always
+  interactive = always
+  ui = always
+  pager = true
+  grep = always
+  decorate = always
+  showbranch = always
+[alias]
+  vlog = log --oneline --graph --decorate
