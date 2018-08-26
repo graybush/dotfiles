@@ -16,12 +16,14 @@ FILES=".bashrc .bash_aliases .bash_profile .vimrc .screenrc"
 ##########
 
 # create dotfiles_old in homedir
-echo "Creating ${OLD} for backup of any existing dotfiles in ~"
+echo "Creating ${OLD} for backup of any existing dotfiles in ${HOME}"
 mkdir -p $OLD
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in ${FILES}; do
+  if [ -f ${HOME}/${file} ]; then
     mv ${HOME}/${file} ${OLD} 
-    echo "Creating symlink to ${file} in home directory."
-    ln -s ${HERE}/${file} ${HOME}/${file}
+  fi
+  echo "Creating symlink to ${file} in home directory."
+  ln -s ${HERE}/${file} ${HOME}/${file}
 done

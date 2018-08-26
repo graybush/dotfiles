@@ -15,6 +15,7 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set autoindent
+set wildmenu
 
 " open split windows below and right rather than above and left set splitbelow 
 " set splitright
