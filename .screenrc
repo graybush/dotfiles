@@ -4,7 +4,7 @@ caption string "%{= dd} "
 
 # huge scrollback buffer
 defscrollback 1000
- 
+
 # no welcome message
 startup_message off
 vbell off

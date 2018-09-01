@@ -7,7 +7,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
+    alias grep='grep --color=auto --exclude-dir={.hg,target}'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 #else
@@ -34,11 +34,11 @@ screen_vim() {
 }
 screen_cd() {
     cd "$*"
-    screen -X chdir "$PWD" 
+    screen -X chdir "$PWD"
 }
 
-if [[ -n $(ps -fu $(whoami) | awk '{print $8}' | grep 'screen') ]]; then 
-  alias cd=screen_cd 
+if [[ -n $(ps -fu $(whoami) | awk '{print $8}' | grep 'screen') ]]; then
+  alias cd=screen_cd
   alias ssh=screen_ssh
   # alias vim=screen_vim
 fi

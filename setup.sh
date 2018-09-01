@@ -2,7 +2,9 @@
 
 ############################
 # setup.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+#
+# This script creates symlinks in the home directory that point to the files in
+# this repo. It is designed to be run after the first clone of this repo.
 ############################
 
 ########## Variables
@@ -19,10 +21,11 @@ FILES=".bashrc .bash_aliases .bash_profile .vimrc .screenrc"
 echo "Creating ${OLD} for backup of any existing dotfiles in ${HOME}"
 mkdir -p $OLD
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+# move any existing dotfiles in ${HOME} to dotfiles_old directory, then create
+# symlinks
 for file in ${FILES}; do
   if [ -f ${HOME}/${file} ]; then
-    mv ${HOME}/${file} ${OLD} 
+    mv ${HOME}/${file} ${OLD}
   fi
   echo "Creating symlink to ${file} in home directory."
   ln -s ${HERE}/${file} ${HOME}/${file}
