@@ -30,3 +30,10 @@ for file in ${FILES}; do
   echo "Creating symlink to ${file} in home directory."
   ln -s ${HERE}/${file} ${HOME}/${file}
 done
+
+if [ -f ${HOME}/.vim ]; then
+  mv ${HOME}/.vim ${HOME}/.vim_backup
+fi
+
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+vim +PluginInstall +qall

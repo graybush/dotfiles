@@ -1,42 +1,91 @@
-set autoindent
+" vundle required
+set nocompatible
+filetype off
+
+" set the runtime path to include Vundle and init
+set rtp+=${HOME}/.vim/bundle/vundle
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/vundle'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdtree'
+" Plugin 'tmhedberg/SimpylFold'
+" Plugin 'vim-scripts/indentpython.vim'
+" Plugin 'vim-syntastic/syntastic'
+" Plugin 'nvie/vim-flake8'
+" super searching
+" Plugin 'kien/ctrlp.vim'
+" Bundle 'Valloric/YouCompleteMe'
+
+" all plugins must be added before here
+call vundle#end()
+filetype plugin indent on
+
+
 set background=dark
 set confirm
+set encoding=utf-8
 set exrc
 set hlsearch
 set nocompatible
 set number
+set relativenumber
 set ruler
 set secure
 set showcmd
 set wildmenu
 
+set autoindent
 set expandtab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set autoindent
-set wildmenu
 
-" open split windows below and right rather than above and left set splitbelow 
-" set splitright
+" open split windows below and right rather than above and left
 set splitbelow
 set splitright
 
+" enable folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+
 syntax enable
 
-" autoindent based on syntax
-filetype on
-filetype plugin indent on
-filetype plugin on
+" flagging unnecessary whitepace
+au BufRead,BufNewFile *.java,*.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+au BufNewFile,BufRead *.py:
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css:
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
 
 " hotkeys
 nnoremap <C-j> :resize +3 <CR>
 nnoremap <C-k> :resize -3 <CR>
 nnoremap <C-h> :vertical resize -3 <CR>
 nnoremap <C-l> :vertical resize +3 <CR>
-map <C-n> : NERDTreeToggle<CR>
+
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+
+nnoremap <C-i> :nohl <CR>
+nnoremap <C-n> :NERDTreeToggle <CR>
+nnoremap <F9> :Tagbar <CR>
 nnoremap <F10> :call ToggleOverLength() <CR>
-nnoremap <C-I> :nohl <CR>
+nnoremap <F11> :call ToggleTrailingSpace() <CR>
 
 
 " status line always on
@@ -62,23 +111,17 @@ hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 " hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 " ++++++++ specific instructions for different filetypes
 
+let python_highlight_all=1
+
 " force shell highlighting to be bash
 let g:is_bash = 1
-
-" define filetypes
-augroup filetypedetect
-    au! BufNewFile,BufRead *.f90? setfiletype fortran
-    au! BufNewFile,BufRead bash* setfiletype sh
-    au! BufNewFile,BufRead Make* :call rcfunc#Setup_Makefiles()
-    au! BufNewFile,BufRead *.vim setfiletype vim
-    au! BufNewFile,BufRead *.py setfiletype python
-    au! BufNewFile,BufRead *.json setfiletype json 
-    au! BufNewFile,BufRead *.md set filetype=markdown
-augroup END
 
 "+++NERDTree settings
 let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
+
+" define BadWhitespace before using in a match
+highlight BadWhitespace ctermbg=red guibg=darkred
 
 """"""""""""""""""""""""""""""""""""""
 " 100 char limit
@@ -94,6 +137,22 @@ function ToggleOverLength()
       let g:over_length_enabled=1
    endif
 endfunction
+
+""""""""""""""""""""""""""""""""""""""
+" Trailing whitespace
+""""""""""""""""""""""""""""""""""""""
+let g:trailing_space_enabled=0
+function ToggleTrailingSpace()
+   if g:trailing_space_enabled==1
+      hi clear ExtraWhitespace
+      let g:trailing_space_enabled=0
+   else
+      highlight ExtraWhitespace ctermbg=darkred guibg=darkred
+      match ExtraWhitespace /\s\+$/
+      let g:trailing_space_enabled=1
+   endif
+endfunction
+
 
 if &diff
    highlight DiffAdd cterm=none ctermfg=black ctermbg=Green gui=none guifg=black guibg=Green
