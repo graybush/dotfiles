@@ -3,7 +3,7 @@
 # Turn on colors if they are available
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls -N --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
@@ -14,8 +14,8 @@ if [ -x /usr/bin/dircolors ]; then
 #    alias ls='ls -F'
 fi
 
-alias ll='ls -lh'
-alias la='ls -Ah'
+alias ll='ls -lhN'
+alias la='ls -AhN'
 alias dirs='dirs -v'
 alias ssh='ssh -XC'
 alias me='ps -fu $(whoami)'

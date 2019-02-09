@@ -21,6 +21,6 @@ set -o vi
 # multiple terminals log to same hist file 
 shopt -s histappend
 HISTCONTROL=ignoredup
-
+export NMON=lmkn
 COLOR="\e[1;32m" # Default to green
 PS1="\[${COLOR}\][\u@\h \[\e[00m\]\W\[${COLOR}\]]\$ \[\e[00m\]"
