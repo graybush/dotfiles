@@ -30,7 +30,7 @@ set exrc
 set hlsearch
 set nocompatible
 set number
-set relativenumber
+" set relativenumber
 set ruler
 set secure
 set showcmd
