@@ -18,7 +18,7 @@ alias ll='ls -lh'
 alias la='ls -Ah'
 alias dirs='dirs -v'
 alias ssh='ssh -XC'
-alias me='ps -fu $(whoami)'
+alias me='ps -fU $(whoami)'
 alias fixterm='stty sane; stty erase ^h'
 
 # Deep file explorer
@@ -37,7 +37,7 @@ screen_cd() {
     screen -X chdir "$PWD"
 }
 
-if [[ -n $(ps -fu $(whoami) | awk '{print $8}' | grep 'screen') ]]; then
+if [[ -n $(ps -fU $(whoami) | awk '{print $8}' | grep 'screen') ]]; then
   alias cd=screen_cd
   alias ssh=screen_ssh
   # alias vim=screen_vim
