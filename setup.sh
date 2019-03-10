@@ -28,7 +28,7 @@ for file in ${FILES}; do
     mv ${HOME}/${file} ${OLD}
   fi
   echo "Creating symlink to ${file} in home directory."
-  ln -s ${HERE}/${file} ${HOME}/${file}
+  ln -s workspace/dotfiles/${file} ~/${file}
 done
 
 if [ -f ${HOME}/.vim ]; then

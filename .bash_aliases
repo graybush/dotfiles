@@ -6,18 +6,21 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls -N --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
+    alias ll='ls -lhN'
+    alias la='ls -AhN'
 
     alias grep='grep --color=auto --exclude-dir={.hg,target}'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
-#else
-#    alias ls='ls -F'
+else
+    alias grep='grep --color=auto' 
+    alias ll='ls -lh'
+    alias la='ls -Ah'
+
 fi
 
-alias ll='ls -lhN'
-alias la='ls -AhN'
 alias dirs='dirs -v'
-alias ssh='ssh -XC'
+# alias ssh='ssh -XC'
 alias me='ps -fU $(whoami)'
 alias fixterm='stty sane; stty erase ^h'
 
@@ -37,7 +40,7 @@ screen_cd() {
     screen -X chdir "$PWD"
 }
 
-if [[ -n $(ps -fU $(whoami) | awk '{print $8}' | grep 'screen') ]]; then
+if [[ -n $(ps aux -U $(whoami) | awk '{print $11}' | grep -x 'screen') ]]; then
   alias cd=screen_cd
   alias ssh=screen_ssh
   # alias vim=screen_vim
