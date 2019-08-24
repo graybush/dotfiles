@@ -22,7 +22,7 @@ Plugin 'scrooloose/nerdtree'
 call vundle#end()
 filetype plugin indent on
 
-
+set tags+=~/.tags/tags
 set background=dark
 set confirm
 set encoding=utf-8
