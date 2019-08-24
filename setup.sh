@@ -31,6 +31,9 @@ for file in ${FILES}; do
   ln -s workspace/dotfiles/${file} ~/${file}
 done
 
+mkdir -p ${HOME}/.ctags.d
+ln -s ${HOME}/workspace/dotfiles/config.ctags ~/.ctags.d/config.ctags
+
 if [ -f ${HOME}/.vim ]; then
   mv ${HOME}/.vim ${HOME}/.vim_backup
 fi
