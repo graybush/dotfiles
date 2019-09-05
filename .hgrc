@@ -1,0 +1,91 @@
+[ui]
+editor = vim
+merge = internal:merge
+ssh = ssh -C
+
+[extensions]
+color = 
+hgext.extdiff =
+shelve = 
+fetch =
+transplant =
+pager =
+strip =
+purge =
+rebase =
+
+[pager]
+pager = less -FRX             
+attend = annotate, cat, diff, export, qdiff, vlog, help, log, clog, glog, slog, flog, vlog, status, files
+
+[extdiff]
+cmd.vimdiff = vimdiff
+
+[patch]
+eol = auto
+
+[diff]
+ignorews = true
+ignorewsamount = true
+ignoreblanklines = true
+
+[merge-tools]
+vimdiff.executable = vim
+vimdiff.args = -d $local $other
+filemerge.checkchanged = true
+
+[color]
+clog.rev = yellow
+clog.book = magenta
+clog.abook = green
+clog.arev = yellow
+clog.user = cyan
+clog.age = 
+clog.section = red
+clog.public = yellow
+clog.draft = black yellow_background
+clog.secret = black green_background
+
+[revsetalias]
+nocm=bookmark() or not user(cmtest)
+
+[templates]
+# Fancy oneline template for prettiness
+oneline = "{label(ifeq(phase,'public', 'clog.public', ifeq(phase,'draft','clog.draft','clog.secret')), '{rev}:{node|short} ')}{
+            if(activebookmark,label('clog.abook','[{activebookmark} '),if(bookmarks,label('clog.book','[')))}{
+            if(bookmarks, label('clog.book','{bookmarks}'))}{
+            if(activebookmark,label('clog.abook',']'),if(bookmarks, label('clog.book',']')))} {
+            pad(label('clog.user', '@{author|user} '), 27, '-')} {
+            desc|firstline} {
+            label('clog.age', '({date|age})')} {
+            ifeq(phase,'public','',label(ifeq(phase,'draft','clog.draft','clog.secret'),phase)) } {
+            if(tags,label('clog.book', '[{tags}]'))}\n"
+# oneline template, followed by which files were edited
+fileList = "{label(ifeq(phase,'public', 'clog.public', ifeq(phase,'draft','clog.draft','clog.secret')), '{rev}:{node|short} ')}{
+             if(activebookmark,label('clog.abook','[{activebookmark} '),if(bookmarks,label('clog.book','[')))}{
+             if(bookmarks, label('clog.book','{bookmarks}'))}{
+             if(activebookmark,label('clog.abook',']'),if(bookmarks, label('clog.book',']')))} {
+             pad(label('clog.user', '@{author|user} '), 27, '-')} {
+             desc|firstline} {
+             label('clog.age', '({date|age})')} {
+             ifeq(phase,'public','',label(ifeq(phase,'draft','clog.draft','clog.secret'),phase)) } {
+             if(tags,label('clog.book', '[{tags}]'))}\n{
+             if(file_mods, label('clog.section','  Modified Files:\n'))}{
+             if(file_mods, file_mods % '    * {file}\n')}{
+             if(file_adds, label('clog.section','  New Files:\n'))}{
+             if(file_adds, file_adds % '    * {file}\n')}{
+             if(file_dels, label('clog.section','  Removed Files:\n'))}{
+             if(file_dels, file_dels % '    * {file}\n')}{
+             if(file_copies, label('clog.section','  Moved Files:\n'))}{
+             if(file_copies, file_copies % '    * {file}\n')}"
+
+[alias]
+glog = log -T compact -G
+# a pretty oneline history with the DAG
+vlog = log -T oneline -G
+# a pretty format that displays file changes
+flog = log -T fileList -G
+# oneline, only history of current commit, ignoring all non-bookmarked cmtest commits
+slog = log -T oneline -G -r "::. and (nocm)"
+# make the status relative to current location
+stat = !hg status $($HG root) $HG_ARGS
