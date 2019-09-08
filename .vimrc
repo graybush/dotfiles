@@ -22,7 +22,8 @@ Plugin 'scrooloose/nerdtree'
 call vundle#end()
 filetype plugin indent on
 
-set tags+=~/.tags/tags
+set tags+=${HOME}/.tags/tags
+set ff=unix
 set background=dark
 set confirm
 set encoding=utf-8
@@ -65,10 +66,8 @@ au BufNewFile,BufRead *.py:
     \ set autoindent
     \ set fileformat=unix
 
-au BufNewFile,BufRead *.js, *.html, *.css:
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 softtabstop=2 shiftwidth=2
 
 " hotkeys
 nnoremap <C-j> :resize +3 <CR>
