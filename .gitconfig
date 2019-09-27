@@ -21,3 +21,8 @@
   showbranch = always
 [alias]
   vlog = log --oneline --graph --decorate
+  lls = ls-tree -r master --name-only
+[difftool "vimdiff"]
+	cmd = vim -f -d -c \"wincmd l\" -c 'cd \"$GIT_PREFIX\"' \"$LOCAL\" \"$REMOTE\"
+[http]
+	proxy = socks5h://127.0.0.1:9050
