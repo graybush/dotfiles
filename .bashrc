@@ -25,6 +25,7 @@ export NMON=lmkn
 
 COLOR="\e[1;32m" # Default to green
 PS1="\[${COLOR}\][\u@\h \[\e[00m\]\W\[${COLOR}\]]\$ \[\e[00m\]"
+
 # . "/home/owner/.acme.sh/acme.sh.env"
 
 # https://www.gnupg.org/documentation/manuals/gnupg-devel/Invoking-GPG_002dAGENT.html

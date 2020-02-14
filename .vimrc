@@ -10,13 +10,13 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
+" Bundle 'Valloric/YouCompleteMe'
 " Plugin 'tmhedberg/SimpylFold'
 " Plugin 'vim-scripts/indentpython.vim'
 " Plugin 'vim-syntastic/syntastic'
 " Plugin 'nvie/vim-flake8'
 " super searching
 " Plugin 'kien/ctrlp.vim'
-" Bundle 'Valloric/YouCompleteMe'
 
 " all plugins must be added before here
 call vundle#end()
@@ -55,7 +55,8 @@ nnoremap <space> za
 syntax enable
 
 " flagging unnecessary whitepace
-au BufRead,BufNewFile *.java,*.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile * match BadWhitespace /\s\+$/
+" au BufRead,BufNewFile *.java,*.py,*.pyw,*.c,*.h,*.groovy match BadWhitespace /\s\+$/
 
 au BufNewFile,BufRead *.py:
     \ set tabstop=4

@@ -13,14 +13,16 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 else
-    alias grep='grep --color=auto' 
+    alias grep='grep --color=auto'
     alias ll='ls -lh'
     alias la='ls -Ah'
 
 fi
 
+# alias ec2='ssh 52.23.226.38'
+alias ec2='ssh 3.91.239.1'
 alias dirs='dirs -v'
-alias duall='du -sch .[!.]* * | sort -h'
+alias duall="echo 'du -sch .[!.]* * | sort -h'; du -sch .[!.]* * | sort -h"
 alias fixterm='stty sane; stty erase ^h'
 alias gtags='ctags -R $(pwd)/ 2>&1 > /dev/null &'
 alias me='ps -fU $(whoami)'
@@ -28,7 +30,6 @@ alias pdb='python -m pdb'
 alias serv='python -m SimpleHTTPServer 9876'
 # alias ssh='ssh -XC -L 9876:localhost:9786'
 alias ssh='ssh -XC'
-alias duall='du -sch .[!.]* * |sort -h'
 # alias gpg='gpg2'
 
 # Deep file explorer
