@@ -4,9 +4,9 @@ merge = internal:merge
 ssh = ssh -C
 
 [extensions]
-color = 
+color =
 hgext.extdiff =
-shelve = 
+shelve =
 fetch =
 transplant =
 pager =
@@ -15,7 +15,7 @@ purge =
 rebase =
 
 [pager]
-pager = less -FRX             
+pager = less -FRX
 attend = annotate, cat, diff, export, qdiff, vlog, help, log, clog, glog, slog, flog, vlog, status, files
 
 [extdiff]
@@ -40,7 +40,7 @@ clog.book = magenta
 clog.abook = green
 clog.arev = yellow
 clog.user = cyan
-clog.age = 
+clog.age =
 clog.section = red
 clog.public = yellow
 clog.draft = black yellow_background

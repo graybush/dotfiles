@@ -11,9 +11,9 @@
 
 HERE=$(pwd)
 # old dotfiles backup directory
-OLD=${HOME}/.dotfiles_old
+OLD=${HOME}/.dotfiles_OLD
 # list of files/folders to symlink in homedir
-FILES=".bashrc .bash_aliases .bash_profile .vimrc .screenrc"
+FILES='.bash_aliases .bash_profile .bashrc .gitconfig .hgignore .hgrc .screenrc  .vimrc'
 
 ##########
 
@@ -21,7 +21,7 @@ FILES=".bashrc .bash_aliases .bash_profile .vimrc .screenrc"
 echo "Creating ${OLD} for backup of any existing dotfiles in ${HOME}"
 mkdir -p $OLD
 
-# move any existing dotfiles in ${HOME} to dotfiles_old directory, then create
+# move any existing dotfiles in ${HOME} to dotfiles_OLD directory, then create
 # symlinks
 for file in ${FILES}; do
   if [ -f ${HOME}/${file} ]; then

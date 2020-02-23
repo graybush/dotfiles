@@ -1,22 +1,22 @@
 syntax: regexp
- 
+
 # Any maven artifacts...
 target/
- 
+
 # Any IntelliJ project metadata...
 .idea
 .iml
- 
+
 # Any Eclipse project metadata...
 .settings
 .classpath
 .project
- 
+
 # Any mod files generated via ifort compile...
 .*\.mod
- 
+
 # Any ctag files
 \.tags
- 
+
 # Any vim files
 .*\.swp
