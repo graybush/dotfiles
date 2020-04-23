@@ -1,6 +1,9 @@
 " vundle required
 set nocompatible
 filetype off
+set path+=**
+
+command! MakeTags !ctags -R .
 
 " set the runtime path to include Vundle and init
 set rtp+=${HOME}/.vim/bundle/vundle

@@ -1,9 +1,9 @@
 # .bashrc
 
-# if not running interactively, don't do anyting 
+# if not running interactively, don't do anyting
 case $- in
     *i*) ;; # if i in $-, continue
-*) return;; # else return
+    *) return;; # else return
 esac
 
 # Source global definitions
@@ -18,16 +18,10 @@ fi
 
 # vi movement in bash shell
 set -o vi
-# multiple terminals log to same hist file 
+# multiple terminals log to same hist file
 shopt -s histappend
 HISTCONTROL=ignoredup
 export NMON=lmkn
 
 COLOR="\e[1;32m" # Default to green
 PS1="\[${COLOR}\][\u@\h \[\e[00m\]\W\[${COLOR}\]]\$ \[\e[00m\]"
-
-# . "/home/owner/.acme.sh/acme.sh.env"
-
-# https://www.gnupg.org/documentation/manuals/gnupg-devel/Invoking-GPG_002dAGENT.html
-# GPG_TTY=$(tty)
-# export GPG_TTY

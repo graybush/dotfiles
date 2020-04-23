@@ -19,8 +19,6 @@ else
 
 fi
 
-# alias ec2='ssh 52.23.226.38'
-alias ec2='ssh 3.91.239.1'
 alias dirs='dirs -v'
 alias duall="echo 'du -sch .[!.]* * | sort -h'; du -sch .[!.]* * | sort -h"
 alias fixterm='stty sane; stty erase ^h'
@@ -29,8 +27,6 @@ alias me='ps -fU $(whoami)'
 alias pdb='python -m pdb'
 alias serv='python -m SimpleHTTPServer 9876'
 # alias ssh='ssh -XC -L 9876:localhost:9786'
-alias ssh='ssh -XC'
-# alias gpg='gpg2'
 
 # Deep file explorer
 alias dirtree="find . -maxdepth 4 -name '\.[^.]*' -prune -o -print | sed -e 's/\.\///' -e 's/[^/^|]*\// --- /g' -e 's/---  / |  /g '"
