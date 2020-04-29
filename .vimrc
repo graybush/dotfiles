@@ -13,6 +13,7 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
 " Bundle 'Valloric/YouCompleteMe'
 " Plugin 'tmhedberg/SimpylFold'
 " Plugin 'vim-scripts/indentpython.vim'
