@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -x
 
 ############################
 # setup.sh
@@ -13,7 +14,7 @@ HERE=$(pwd)
 # old dotfiles backup directory
 OLD=${HOME}/.dotfiles_OLD
 # list of files/folders to symlink in homedir
-FILES='.bash_aliases .bash_profile .bashrc .gitconfig .hgignore .hgrc .screenrc  .vimrc'
+FILES='.bash_aliases .bash_profile .bashrc .gitconfig .hgignore .hgrc .screenrc .vimrc'
 
 ##########
 
