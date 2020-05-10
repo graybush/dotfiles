@@ -1,7 +1,6 @@
 " vundle required
 set nocompatible
 filetype off
-set path+=**
 
 command! MakeTags !ctags -R .
 
@@ -24,6 +23,7 @@ Plugin 'tpope/vim-surround'
 
 " all plugins must be added before here
 call vundle#end()
+set path+=**
 filetype plugin indent on
 
 set tags+=${HOME}/.tags/tags
