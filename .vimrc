@@ -91,6 +91,7 @@ nnoremap <F9> :Tagbar <CR>
 nnoremap <F10> :call ToggleOverLength() <CR>
 nnoremap <F11> :call ToggleTrailingSpace() <CR>
 
+map <C-]> <C-w><C-]><C-w>T
 
 " status line always on
 set laststatus=2
