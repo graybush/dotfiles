@@ -1,45 +1,26 @@
-" vundle required
 set nocompatible
-filetype off
+set path+=**
 
 command! MakeTags !ctags -R .
+" set tags+=${HOME}/.tags/tags
 
-" set the runtime path to include Vundle and init
-set rtp+=${HOME}/.vim/bundle/vundle
-call vundle#begin()
+syntax enable
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-" Bundle 'Valloric/YouCompleteMe'
-" Plugin 'tmhedberg/SimpylFold'
-" Plugin 'vim-scripts/indentpython.vim'
-" Plugin 'vim-syntastic/syntastic'
-" Plugin 'nvie/vim-flake8'
-" super searching
-" Plugin 'kien/ctrlp.vim'
+let g:netrw_banner=0
+" let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_liststyle=3
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S+'
 
-" all plugins must be added before here
-call vundle#end()
-set path+=**
-filetype plugin indent on
-
-set tags+=${HOME}/.tags/tags
-set ff=unix
+set backspace=2
 set background=dark
 set confirm
-set encoding=utf-8
-set exrc
 set hlsearch
-set nocompatible
-set number
-" set relativenumber
+set incsearch
 set ruler
-set secure
-set showcmd
 set wildmenu
+set wildoptions=pum
 
 set autoindent
 set expandtab
@@ -56,22 +37,22 @@ set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
-syntax enable
-
 " flagging unnecessary whitepace
-au BufRead,BufNewFile * match BadWhitespace /\s\+$/
-" au BufRead,BufNewFile *.java,*.py,*.pyw,*.c,*.h,*.groovy match BadWhitespace /\s\+$/
+au BufRead, BufNewFile * match BadWhitespace /\s\+$/
 
-au BufNewFile,BufRead *.py:
+au BufNewFile, BufRead *.java
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=100
+
+au BufNewFile, BufRead *.py
     \ set tabstop=4
     \ set softtabstop=4
     \ set shiftwidth=4
     \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
 
-au BufNewFile,BufRead *.js,*.html,*.css
+au BufNewFile, BufRead *.js,*.html,*.css
     \ set tabstop=2 softtabstop=2 shiftwidth=2
 
 " hotkeys
@@ -80,13 +61,6 @@ nnoremap <C-k> :resize -3 <CR>
 nnoremap <C-h> :vertical resize -3 <CR>
 nnoremap <C-l> :vertical resize +3 <CR>
 
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
-nnoremap <C-h> <C-w><C-h>
-
-nnoremap <C-i> :nohl <CR>
-nnoremap <C-n> :NERDTreeToggle <CR>
 nnoremap <F9> :Tagbar <CR>
 nnoremap <F10> :call ToggleOverLength() <CR>
 nnoremap <F11> :call ToggleTrailingSpace() <CR>
@@ -115,15 +89,6 @@ hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 " hi User2 ctermbg=red   ctermfg=blue  guibg=red   guifg=blue
 " hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 " ++++++++ specific instructions for different filetypes
-
-let python_highlight_all=1
-
-" force shell highlighting to be bash
-let g:is_bash = 1
-
-"+++NERDTree settings
-let g:NERDTreeDirArrowExpandable='+'
-let g:NERDTreeDirArrowCollapsible='~'
 
 " define BadWhitespace before using in a match
 highlight BadWhitespace ctermbg=red guibg=darkred
