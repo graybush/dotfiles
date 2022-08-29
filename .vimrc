@@ -38,21 +38,21 @@ set foldlevel=99
 nnoremap <space> za
 
 " flagging unnecessary whitepace
-au BufRead, BufNewFile * match BadWhitespace /\s\+$/
+au BufRead,BufNewFile * match BadWhitespace /\s\+$/
 
-au BufNewFile, BufRead *.java
+au BufNewFile,BufRead *.java
     \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=100
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ textwidth=100
 
-au BufNewFile, BufRead *.py
+au BufNewFile,BufRead *.py
     \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ textwidth=79
 
-au BufNewFile, BufRead *.js,*.html,*.css
+au BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 softtabstop=2 shiftwidth=2
 
 " hotkeys

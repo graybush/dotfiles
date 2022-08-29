@@ -1,22 +1,27 @@
+[alias]
+  vlog = log --oneline --graph --decorate
+  lls = ls-tree -r master --name-only
+  whoami = ! git var -l | grep '^GIT_.*_IDENT'
+[commit]
+  gpgsign = true
 [core]
   editor = vim
 [diff]
   tool = vimdiff
+[difftool]
+  prompt = false
+[difftool "vimdiff"]
+  cmd = vim -f -d -c \"wincmd l\" -c 'cd \"$GIT_PREFIX\"' \"$LOCAL\" \"$REMOTE\"
+[fetch]
+  prune = true
+[gpg]
+  program = gpg2
+[http]
+  proxy = socks5h://127.0.0.1:9050
 [merge]
   tool = vimdiff
   conflictstyle = diff3
-[difftool]
-  prompt = false
+[pull]
+  rebase = true
 [push]
   default = matching
-[alias]
-  vlog = log --oneline --graph --decorate
-  lls = ls-tree -r master --name-only
-[commit]
-  gpgsign = true
-[gpg]
-  program = gpg2
-[difftool "vimdiff"]
-  cmd = vim -f -d -c \"wincmd l\" -c 'cd \"$GIT_PREFIX\"' \"$LOCAL\" \"$REMOTE\"
-[http]
-  proxy = socks5h://127.0.0.1:9050

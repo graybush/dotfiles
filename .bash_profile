@@ -19,7 +19,7 @@ case $TERM in
 esac
 
 case $(hostname) in
-  freenas.local)
+  freenas.home)
     export CLICOLOR="YES"
     export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
     ;;

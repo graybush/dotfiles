@@ -34,18 +34,6 @@ alias docker='HTTPS_PROXY=127.0.0.1:9050 docker'
 # Deep file explorer
 alias dirtree="find . -maxdepth 4 -name '\.[^.]*' -prune -o -print | sed -e 's/\.\///' -e 's/[^/^|]*\// --- /g' -e 's/---  / |  /g '"
 
-# screen_ssh() {
-#     args=$#
-#     screen -t ${!args} ssh -X -C $@
-# }
-# screen_vim() {
-#     args=$#
-#     screen -t ${!args} vim $@
-# }
-# screen_cd() {
-#     cd "$*"
-#     screen -X chdir "$PWD"
-# }
 man() {
     env \
     LESS_TERMCAP_mb="$(printf "\e[1;31m")" \
@@ -58,8 +46,3 @@ man() {
     man "${@}"
 }
 
-# if [[ -n $(ps aux -U $(whoami) | awk '{print $11}' | grep -x 'screen') ]]; then
-#   alias cd=screen_cd
-#   alias ssh=screen_ssh
-#   # alias vim=screen_vim
-# fi

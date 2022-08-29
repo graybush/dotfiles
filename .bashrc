@@ -18,11 +18,11 @@ fi
 
 # vi movement in bash shell
 set -o vi
+
 # multiple terminals log to same hist file
 shopt -s histappend
 HISTCONTROL=ignoredup
 export NMON=lmkn
-# export LD_LIBRARY_PATH=/usr/local/lib64:${LD_LIBRARY_PATH}
 
 COLOR="\e[1;32m" # Default to green
 PS1="\[${COLOR}\][\u@\h \[\e[00m\]\W\[${COLOR}\]]\$ \[\e[00m\]"
