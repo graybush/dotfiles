@@ -1,45 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
-############################
-# setup
-#
-# This script creates symlinks in the home directory that point to the
-# files in this repo. It is designed to be run after the first clone of
-# this repo.
-############################
-
-########## Variables
-
-HERE=$(pwd)
-# old dotfiles backup directory
-OLD=${HOME}/.dotfiles_OLD
-# list of files/folders to symlink in homedir
-FILES='.bash_aliases .bash_profile .bashrc .hgignore .hgrc .screenrc .vimrc'
-
-##########
-
-# create dotfiles_old in homedir
-echo "Creating ${OLD} for backup of any existing dotfiles in ${HOME}"
-mkdir -p $OLD
-
-# move any existing dotfiles in ${HOME} to dotfiles_OLD directory, then
-# create symlinks
-for file in ${FILES}; do
-  if [ -f ${HOME}/${file} ] && [ ! -h ${HOME}/${file} ]; then
-    mv ${HOME}/${file} ${OLD}
-    echo "Creating symlink to ${file} in home directory."
-    ln -s ${HERE}/${file} ~/${file}
-  fi
+for f in dotfiles/*; do \
+	  bn=$(basename $f)
+    target=$HOME/$bn
+	  if test -f $target -a '!' -L $target; then
+	      echo "error: $target exists; remove it to opt-in to installation, then"
+	      echo "  rerun make install-dotfiles"
+	  else
+	      echo "Installing $target"
+	      ln -sf $(pwd)/dotfiles/$bn $target
+	  fi;
 done
-
-mkdir -p ${HOME}/.ctags.d
-if [ ! -h ${HOME}/.ctags.d/config.ctags ]; then
-  ln -s ${HERE}/config.ctags ~/.ctags.d/config.ctags
-fi
-
-if [ ! -d ${HOME}/.vim/bundle/vundle ]; then
-  git clone https://github.com/gmarik/vundle.git ${HOME}/.vim/bundle/vundle
-fi
-
-vim +PluginInstall +qall
