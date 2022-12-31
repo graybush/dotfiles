@@ -24,5 +24,9 @@ shopt -s histappend
 HISTCONTROL=ignoredup
 export NMON=lmkn
 
-COLOR="\e[1;32m" # Default to green
+if [ $(hostname -s) == fedora ]; then
+  COLOR="\e[1;36m" # Default to green
+else
+  COLOR="\e[1;32m" # Default to green
+fi
 PS1="\[${COLOR}\][\u@\h \[\e[00m\]\W\[${COLOR}\]]\$ \[\e[00m\]"
