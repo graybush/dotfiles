@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-for f in dotfiles/*; do \
+for f in $(ls -A dotfiles/); do \
 	  bn=$(basename $f)
     target=$HOME/$bn
 	  if test -f $target -a '!' -L $target; then
